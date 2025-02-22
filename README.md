@@ -28,3 +28,5 @@ After running that command the new password is ready to use from inside your cli
 This utility does not check the size of a provided integer or if an argument is integer - be reasonable.
 
 
+# To-do
+[ ] Text file lookup for generations history
