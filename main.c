@@ -1,10 +1,11 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #include <time.h>
 
 #define DEFAULT_PASSWORD_LENGTH 13
-
 
 int
 getRandomASCIICode()
@@ -23,6 +24,33 @@ intToChar(int asciiCode)
         char Character = asciiCode;
 
         return Character;
+}
+
+bool
+newlyGenerated(FILE* history, char* password, int passwordLength)
+{
+        char previous[passwordLength];
+        while ( (previous = fgets(previous, passwordLength, history)) != EOF) {
+                if (strcmp(previous, password) {
+                        return false;
+                }
+        }
+        return true;
+}
+
+void
+generate(FILE* history, int passwordLength)
+{
+        char password[passwordLength];
+        for (int i = 0; i < passwordLength; i++) {
+                password[i] = intToChar(getRandomASCIICode());
+        }
+        if (newlyGenerated(history, password, passwordLength)) {
+                fprintf(stdout, "%s", password);
+                fprintf(history, "%s\n", password);
+        } else {
+                generate(history, passwordLength);
+        }
 }
 
 int
@@ -45,9 +73,12 @@ main(int argc, char** argv)
                 }
         }
 
-        for (int i = 0; i < passwordLength; i++) {
-                fprintf(stdout, "%c", intToChar(getRandomASCIICode()));
+        FILE* passwordHistory = fopen("history.txt", "a+");
+        if (passwordHistory == NULL) {
+                fprintf(stderr, "Could not open the file. Exiting...\n");
         }
+        generate(passwordHistory, passwordLength);
+        fclose(passwordHistory);
 
         return 0;
 }
