@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,9 +30,11 @@ intToChar(int asciiCode)
 bool
 newlyGenerated(FILE* history, char* password, int passwordLength)
 {
-        char previous[passwordLength];
-        while ( (previous = fgets(previous, passwordLength, history)) != EOF) {
-                if (strcmp(previous, password) {
+        char *previous;
+        size_t len = 0;
+        ssize_t read;
+        while ((read = getline(&previous, &len, history)) != -1) {
+                if (strcmp(previous, password)) {
                         return false;
                 }
         }
