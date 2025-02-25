@@ -2,8 +2,8 @@
 
 Passgen is a **dead simple** random password utility written in C.
 
-It could be used to create a random string and paste it (copying is done automatically) to a password manager.
-Aim of this magnificent piece of software is **just excercise**. 
+It can be used to create a random string and paste it (copying is done automatically) to a password manager.
+Aim of this magnificent piece of software is **just an excercise**. 
 
 ## Installation
 ### Requirements
