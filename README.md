@@ -10,7 +10,7 @@ Aim of this magnificent piece of software is **just an excercise**.
 ```
 just wl-clipboard bash
 ```
-
+and then execute this command from shell: 
 ```
 git clone REPOURL && cd passgen/ && just build && chmod +x passcopy.sh
 ```
@@ -29,4 +29,4 @@ This utility does not check the size of a provided integer or if an argument is 
 
 
 # To-do
-[ ] Text file lookup for generations history
+[x] Text file lookup for generations history
